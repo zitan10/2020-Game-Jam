@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour {
     //Check if player can jump
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "ground")
+        if (collision.gameObject.tag == "ground" || collision.gameObject.tag == "wall")
         {
             isGrounded = true;
         }

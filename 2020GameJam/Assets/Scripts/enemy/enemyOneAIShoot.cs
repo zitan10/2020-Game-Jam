@@ -13,6 +13,12 @@ public class enemyOneAIShoot : MonoBehaviour {
     private float timer;
     public float turrentWaitTime = 1f;
 
+    public GameObject[] walls;
+
+    private Vector3 target;
+
+    private float clostestWallDistance;
+
     // Use this for initialization
     void Start()
     {
@@ -26,13 +32,25 @@ public class enemyOneAIShoot : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        walls = GameObject.FindGameObjectsWithTag("wall");
 
-        //Is enemy position close to player position?
+        target = new Vector3(0, 0, 0);
 
-        //Direction from player to enemy
-        Vector3 direction = player.position - this.transform.position;
-        //Prevent enemy from rotation upwards
-        direction.y = 0;
+        clostestWallDistance = 10000f;
+        foreach (GameObject wall in walls)
+        {
+            float distanceCheck = Vector3.Distance(wall.transform.position, this.transform.position);
+            if (distanceCheck < clostestWallDistance)
+            {
+                clostestWallDistance = distanceCheck;
+                target = wall.transform.position;
+            }
+        }
+
+        //Is enemy position closer to player or wall position?
+        Vector3 direction = (Vector3.Distance(player.position, this.transform.position) 
+            < Vector3.Distance(target, this.transform.position)
+            ) ? player.position - this.transform.position: target - this.transform.position;
 
         if (Vector3.Distance(player.position, this.transform.position) < 40)
         {

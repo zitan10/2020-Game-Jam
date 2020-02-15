@@ -12,7 +12,7 @@ public class enemyOneAIMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
             //Is enemy position close to player position?
             if (Vector3.Distance(player.position, this.transform.position) < 40)
@@ -27,6 +27,6 @@ public class enemyOneAIMovement : MonoBehaviour {
                 //Move enemy towards player if position is close to player
                 this.transform.Translate(0, 0, 0.025f);
             }
-        }
+    }
     
 }

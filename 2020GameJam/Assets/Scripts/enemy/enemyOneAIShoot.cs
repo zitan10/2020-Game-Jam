@@ -16,7 +16,7 @@ public class enemyOneAIShoot : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        prefab = Resources.Load("Projectile") as GameObject;
+        prefab = Resources.Load("EnemyProjectile") as GameObject;
         timer = 0f;
         //Prevent projectile from passing through objects
         rb = projectile.GetComponent<Rigidbody>();

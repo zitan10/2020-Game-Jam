@@ -15,7 +15,7 @@ public class enemyOneAIMovement : MonoBehaviour {
     void Update()
     {
             //Is enemy position close to player position?
-            if (Vector3.Distance(player.position, this.transform.position) < 400)
+            if (Vector3.Distance(player.position, this.transform.position) < 40)
             {
                 //Direction from player to enemy
                 Vector3 direction = player.position - this.transform.position;

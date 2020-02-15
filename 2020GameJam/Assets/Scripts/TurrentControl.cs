@@ -19,6 +19,7 @@ public class TurrentControl : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.T))
             {
                 turrent1.SetActive(true);
+                this.gameObject.SetActive(false);
             }
         }
 	}

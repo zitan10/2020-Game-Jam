@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class enemyOneAIShoot : MonoBehaviour {
 
-    public Transform player;
+    private GameObject player;
     GameObject prefab;
     public GameObject projectile;
     public Transform barrel;
@@ -27,6 +27,7 @@ public class enemyOneAIShoot : MonoBehaviour {
         //Prevent projectile from passing through objects
         rb = projectile.GetComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        player = GameObject.Find("PlayerObject");
     }
 
     // Update is called once per frame
@@ -48,11 +49,11 @@ public class enemyOneAIShoot : MonoBehaviour {
         }
 
         //Is enemy position closer to player or wall position?
-        Vector3 direction = (Vector3.Distance(player.position, this.transform.position) 
+        Vector3 direction = (Vector3.Distance(player.transform.position, this.transform.position) 
             < Vector3.Distance(target, this.transform.position)
-            ) ? player.position - this.transform.position: target - this.transform.position;
+            ) ? player.transform.position - this.transform.position: target - this.transform.position;
 
-        if (Vector3.Distance(player.position, this.transform.position) < 40)
+        if (Vector3.Distance(player.transform.position, this.transform.position) < 40)
         {
             //Rotata Turrent Barrel
             this.transform.rotation = Quaternion.Slerp(

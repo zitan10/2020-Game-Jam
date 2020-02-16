@@ -34,7 +34,7 @@ public class TurrentAI : MonoBehaviour {
 
         if (enemies == null)
         {
-            enemies = GameObject.FindGameObjectsWithTag("enemies");
+            enemies = GameObject.FindGameObjectsWithTag("enemyTag");
         }
 
     }
@@ -42,13 +42,14 @@ public class TurrentAI : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        enemies = GameObject.FindGameObjectsWithTag("enemies");
+        enemies = GameObject.FindGameObjectsWithTag("enemyTag");
         target = new Vector3(0, 0, 0);
 
-        clostestEnemyDistance = 10000f;
+        
         foreach (GameObject enemy in enemies)
         {
             float distanceCheck = Vector3.Distance(enemy.transform.position, this.transform.position);
+            clostestEnemyDistance = 10000000f;
             if (distanceCheck < clostestEnemyDistance)
             {
                 clostestEnemyDistance = distanceCheck;
